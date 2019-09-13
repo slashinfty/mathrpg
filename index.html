@@ -1,0 +1,57 @@
+<!doctype HTML>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Math RPG</title>
+    <meta name="author" content="Matt Braddock">
+    <meta name="description" content="Random math problem generator">
+    <meta name="keywords" content="math, random, generator">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <!-- CSS -->
+    <link rel="stylesheet" type="text/css" href="css/latex_no_numbers.css">
+    <link rel="stylesheet" type="text/css" href="css/index.css">
+    
+    <!-- JS -->
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script type="text/javascript" id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="js/index.js"></script>
+  </head>
+  <body>
+    <h1>Math RPG</h1>
+    <p class="author">Matt Braddock</p>
+    <p style="text-align: center">Not a role-playing game, but a <span style="font-weight: bold;">random problem generator</span>. Select the topic, adjust the settings, and generate a problem. Answers are provided, but hidden initially.</p>
+    <ul>
+      <li><a href="javascript:void(0)" onclick="distMid()">Distance and Midpoint</a></li>
+      <div style="display: none;" id="dist-mid">
+        <p><button onclick="distMidQ()">Generate</button></p>
+        <div style="display: none;" id="dist-mid-body">
+          <div id="dist-mid-q"></div>
+          <p><a href="javascript:void(0)" onclick="distMidA()">Toggle Answer</a></p>
+          <div style="display: none;" id="dist-mid-a"></div>
+        </div>
+      </div>
+    </ul><!--
+    <ul>
+      <li><a href="javascript:void(0)" onclick="eqLines()">Equations of a Line</a></li>
+      <div style="display: none;" id="eq-lines">
+        <p>
+          <label for="eq-lines-type">Type of problem: </label>
+          <select id="eq-lines-type">
+            <option value="1">Given slope and point</option>
+            <option value="2">Given two points</option>
+            <option value="3">Perpendicular to line</option>
+            <option value="4">Parallel to line</option>
+          </select>
+          &nbsp;
+          <button onclick="eqLinesQ()">Generate</button>
+        </p>
+        <div style="display: none;" id="eq-lines-body">
+          <div id="eq-lines-q"></div>
+          <p><a href="javascript:void(0)" onclick="eqLinesA()">Toggle Answer</a></p>
+          <div style="display: none;" id="eq-lines-a"></div>
+        </div>
+      </div>
+    </ul>-->
+  </body>
+</html>
