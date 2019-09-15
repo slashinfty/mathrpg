@@ -339,3 +339,98 @@ function factorQuadsA() {
   if (document.getElementById("factor-quads-a").style.display === "none") document.getElementById("factor-quads-a").style.display = "block";
   else document.getElementById("factor-quads-a").style.display = "none";
 }
+
+function quadForms() {
+  if (document.getElementById("quad-forms").style.display === "none") document.getElementById("quad-forms").style.display = "block";
+  else document.getElementById("quad-forms").style.display = "none";
+}
+
+async   function quadFormsQ() {
+  let a = Math.floor(Math.random() * 4) + 1;
+  let b = Math.floor(Math.random() * 4) + 1;
+  let p, q;
+  do {
+    do {
+      p = Math.floor(Math.random() * 25) - 12;
+    } while (p === 0);
+    do {
+      q = Math.floor(Math.random() * 25) - 12;
+    } while (q === 0); 
+  } while (document.getElementById("quad-start-form").value === "3" ? ((a * q) + (b * p)) % (2 * a * b) !== 0 : false);
+  let firstFactor = reduce(a, p);
+  if (firstFactor[0] < 0) firstFactor.forEach((e, i) => firstFactor[i] = -e);
+  let secondFactor = reduce(b, q);
+  if (secondFactor[0] < 0) secondFactor.forEach((e, i) => secondFactor[i] = -e);
+  a = firstFactor[0];
+  p = firstFactor[1];
+  b = secondFactor[0];
+  q = secondFactor[1];
+  let fTerm = a === 1 ? "x" : a.toString() + "x";  
+  let pNeg = p < 0 ? "-" : "+";
+  let pTerm = pNeg + Math.abs(p).toString();
+  let gTerm = b === 1 ? "x" : b.toString() + "x";
+  let qNeg = q < 0 ? "-" : "+";
+  let qTerm = qNeg + Math.abs(q).toString();
+  let aNeg = a * b < 0 ? "-" : "";
+  let aTerm = Math.abs(a * b) === 1 ? aNeg + "x^{2}" : aNeg + Math.abs(a * b).toString() + "x^{2}";
+  let bNeg = (a * q) + (b * p) < 0 ? "-" : "+";
+  let bTerm = Math.abs((a * q) + (b * p)) === 1 ? bNeg + "x" : bNeg + Math.abs((a * q) + (b * p)).toString() + "x";
+  bTerm = (a * q) + (b * p) === 0 ? "" : bTerm;
+  let cNeg = p * q < 0 ? "-" : "+";
+  let cTerm = cNeg + Math.abs(p * q).toString();
+  let vaTerm = Math.abs(a * b) === 1 ? aNeg : aNeg + Math.abs(a * b).toString();
+  let hNum = (a * q) + (b * p);
+  let hDen = 2 * a * b;
+  let h = reduce(hNum, hDen);
+  let hNeg = negative(h) ? "-" : "+";
+  let hTerm = Math.abs(h[1]) === 1 ? hNeg + Math.abs(h[0]).toString() : hNeg + "\\dfrac{" + Math.abs(h[0]) + "}{" + Math.abs(h[1]) + "}";
+  hTerm = h[0] === 0 ? "" : hTerm;
+  let kNum = 4 * a * b * p * q - Math.pow((a * q) + (b * p), 2);
+  let kDen = 4 * a * b;
+  let k = reduce(kNum, kDen);
+  let kNeg = negative(k) ? "-" : "+";
+  let kTerm = Math.abs(k[1]) === 1 ? kNeg + Math.abs(k[0]).toString() : kNeg + "\\dfrac{" + Math.abs(k[0]) + "}{" + Math.abs(k[1]) + "}";
+  kTerm = k[0] === 0 ? "" : kTerm;
+  switch (document.getElementById("quad-start-form").value) {
+    case "1":
+      await typeset(() => {
+        let question = document.getElementById("quad-forms-q");
+        question.innerHTML = "$$y=" + aTerm + bTerm + cTerm + "$$";
+        return question;
+      });
+      await typeset(() => {
+        let answer = document.getElementById("quad-forms-a");
+        answer.innerHTML = "$$\\text{Factored: } y=\\left(" + fTerm + pTerm + "\\right)\\left(" + gTerm + qTerm + "\\right)$$ $$\\text{Vertex: } y=" + vaTerm + "\\left(x" + hTerm + "\\right)^{2}" + kTerm + "$$";
+        return answer;
+      });
+      break;
+    case "2":
+      await typeset(() => {
+        let question = document.getElementById("quad-forms-q");
+        question.innerHTML = "$$y=\\left(" + fTerm + pTerm + "\\right)\\left(" + gTerm + qTerm + "\\right)$$";
+        return question;
+      });
+      await typeset(() => {
+        let answer = document.getElementById("quad-forms-a");
+        answer.innerHTML = "$$\\text{Standard: } y=" + aTerm + bTerm + cTerm + "$$ $$\\text{Vertex: } y=" + vaTerm + "\\left(x" + hTerm + "\\right)^{2}" + kTerm + "$$";
+      });
+      break;
+    case "3":
+      await typeset(() => {
+        let question = document.getElementById("quad-forms-q");
+        question.innerHTML = "$$y=" + vaTerm + "\\left(x" + hTerm + "\\right)^{2}" + kTerm + "$$";
+        return question;
+      });
+      await typeset(() => {
+        let answer = document.getElementById("quad-forms-a");
+        answer.innerHTML = "$$\\text{Standard: } y=" + aTerm + bTerm + cTerm + "$$ $$\\text{Factored: } y=\\left(" + fTerm + pTerm + "\\right)\\left(" + gTerm + qTerm + "\\right)$$";
+      });
+  }
+  document.getElementById("quad-forms-body").style.display = "block";
+  document.getElementById("quad-forms-a").style.display = "none";
+}
+
+function quadFormsA() {
+  if (document.getElementById("quad-forms-a").style.display === "none") document.getElementById("quad-forms-a").style.display = "block";
+  else document.getElementById("quad-forms-a").style.display = "none";
+}

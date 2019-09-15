@@ -70,5 +70,25 @@
         </div>
       </div>
     </ul>
+    <ul>
+      <li><a href="javascript:void(0)" onclick="quadForms()">Convert Quadratics</a></li>
+      <div style="display: none;" id="quad-forms">
+        <p>
+          <label for="quad-start-form">Starting form: </label>
+          <select id="quad-start-form">
+            <option value="1">Standard</option>
+            <option value="2">Factored</option>
+            <option value="3">Vertex</option>
+          </select>
+          &nbsp;
+          <button onclick="quadFormsQ()">Generate</button>
+        </p>
+        <div style="display: none;" id="quad-forms-body">
+          <div id="quad-forms-q"></div>
+          <p><a href="javascript:void(0)" onclick="quadFormsA()">Toggle Answer</a></p>
+          <div style="display: none;" id="quad-forms-a"></div>
+        </div>
+      </div>
+    </ul>
   </body>
 </html>
