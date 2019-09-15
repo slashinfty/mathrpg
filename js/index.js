@@ -274,7 +274,7 @@ function factorQuads() {
   else document.getElementById("factor-quads").style.display = "none";
 }
 
-async function factorQuadsQ() { //reduce a+p and b+q initially for no gcf
+async function factorQuadsQ() {
   let g, a, b, p, q;
   if (document.getElementById("gcf-factor-quads").checked) {
     do {
@@ -298,7 +298,8 @@ async function factorQuadsQ() { //reduce a+p and b+q initially for no gcf
   if (firstFactor[2] < 0) firstFactor.forEach((e, i) => firstFactor[i] = -e);
   let secondFactor = reduce(b, q, true);
   if (secondFactor[2] < 0) secondFactor.forEach((e, i) => secondFactor[i] = -e);
-  g *= firstFactor[2] * secondFactor[2]; 
+  g *= firstFactor[2] * secondFactor[2];
+  if (!document.getElementById("gcf-factor-quads").checked) g = 1;
   let aTerm = g * firstFactor[0] * secondFactor[0];
   let aNeg = aTerm < 0 ? "-" : "";
   let aPrint = Math.abs(aTerm) === 1 ? aNeg + "x^{2}" : aNeg + Math.abs(aTerm) + "x^{2}";
