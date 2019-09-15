@@ -6,10 +6,11 @@ function typeset(code) {
   return MathJax.startup.promise;
 }
 
-function reduce(num, den) {
+function reduce(num, den, lcm = false) {
   let gcd = (a, b) => b ? gcd(b, a % b) : a;
   gcd = gcd(num, den);
-  return [num / gcd, den / gcd];
+  if (lcm) return [num / gcd, den / gcd, gcd];
+  else return [num / gcd, den / gcd];
 }
 
 function negative(frac) {
@@ -266,4 +267,74 @@ async function eqLinesQ() {
 function eqLinesA() {
   if (document.getElementById("eq-lines-a").style.display === "none") document.getElementById("eq-lines-a").style.display = "block";
   else document.getElementById("eq-lines-a").style.display = "none";
+}
+
+function factorQuads() {
+  if (document.getElementById("factor-quads").style.display === "none") document.getElementById("factor-quads").style.display = "block";
+  else document.getElementById("factor-quads").style.display = "none";
+}
+
+async function factorQuadsQ() { //reduce a+p and b+q initially for no gcf
+  let g, a, b, p, q;
+  if (document.getElementById("gcf-factor-quads").checked) {
+    do {
+      g = Math.floor(Math.random() * 13) - 6;
+    } while (g === 0);
+  } else g = 1;
+  if (document.getElementById("a-factor-quads").checked) {
+    a = Math.floor(Math.random() * 4) + 1;
+    b = Math.floor(Math.random() * 4) + 1;
+  } else {
+    a = 1;
+    b = 1;
+  }
+  do {
+    p = Math.floor(Math.random() * 25) - 12;
+  } while (p === 0);
+  do {
+    q = Math.floor(Math.random() * 25) - 12;
+  } while (q === 0);
+  let firstFactor = reduce(a, p, true);
+  if (firstFactor[2] < 0) firstFactor.forEach((e, i) => firstFactor[i] = -e);
+  let secondFactor = reduce(b, q, true);
+  if (secondFactor[2] < 0) secondFactor.forEach((e, i) => secondFactor[i] = -e);
+  g *= firstFactor[2] * secondFactor[2]; 
+  let aTerm = g * firstFactor[0] * secondFactor[0];
+  let aNeg = aTerm < 0 ? "-" : "";
+  let aPrint = Math.abs(aTerm) === 1 ? aNeg + "x^{2}" : aNeg + Math.abs(aTerm) + "x^{2}";
+  let bTerm = g * ((firstFactor[0] * secondFactor[1]) + (secondFactor[0] * firstFactor[1]));
+  let bNeg = bTerm < 0 ? "-" : "+";
+  let bPrint;
+  if (bTerm === 0) bPrint = "";
+  else if (Math.abs(bTerm) === 1) bPrint = bNeg + "x";
+  else bPrint = bNeg + Math.abs(bTerm) + "x";
+  let cTerm = g * firstFactor[1] * secondFactor[1];
+  let cNeg = cTerm < 0 ? "-" : "+";
+  let cPrint = cTerm === 0 ? "" : cNeg + Math.abs(cTerm);
+  let gNeg = g * firstFactor[2] * secondFactor[2] < 0 ? "-" : "";
+  let gTerm = Math.abs(g) === 1 ? gNeg : gNeg + Math.abs(g).toString();
+  gTerm = document.getElementById("gcf-factor-quads").checked ? gTerm : "";
+  let pNeg = firstFactor[1] < 0 ? "-" : "+";
+  let pTerm = firstFactor[1] === 0 ? "" : pNeg + Math.abs(firstFactor[1]);
+  let qNeg = secondFactor[1] < 0 ? "-" : "+";
+  let qTerm = secondFactor[1] === 0 ? "" : qNeg + Math.abs(secondFactor[1]);
+  let rTerm = firstFactor[0] === 1 ? "" : firstFactor[0].toString();
+  let sTerm = secondFactor[0] === 1 ? "" : secondFactor[0].toString();
+  await typeset(() => {
+    let question = document.getElementById("factor-quads-q");
+    question.innerHTML = "$$" + aPrint + bPrint + cPrint + "$$";
+    return question;
+  });
+  await typeset(() => {
+    let answer = document.getElementById("factor-quads-a");
+    answer.innerHTML = "$$" + gTerm + "\\left(" + rTerm + "x" + pTerm + "\\right)\\left(" + sTerm + "x" + qTerm + "\\right)$$";
+    return answer;
+  });
+  document.getElementById("factor-quads-body").style.display = "block";
+  document.getElementById("factor-quads-a").style.display = "none";
+}
+
+function factorQuadsA() {
+  if (document.getElementById("factor-quads-a").style.display === "none") document.getElementById("factor-quads-a").style.display = "block";
+  else document.getElementById("factor-quads-a").style.display = "none";
 }

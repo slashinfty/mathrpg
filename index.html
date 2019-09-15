@@ -19,7 +19,7 @@
   </head>
   <body>
     <h1>Math RPG</h1>
-    <p class="author">Matt Braddock</p>
+    <p class="author"><a href="https://github.com/slashinfty/mathrpg" target="_blank">Matt Braddock</a></p>
     <p style="text-align: center">Not a role-playing game, but a <span style="font-weight: bold;">random problem generator</span>. Select the topic, adjust the settings, and generate a problem. Answers are provided, but hidden initially.</p>
     <ul>
       <li><a href="javascript:void(0)" onclick="distMid()">Distance and Midpoint</a></li>
@@ -50,6 +50,23 @@
           <div id="eq-lines-q"></div>
           <p><a href="javascript:void(0)" onclick="eqLinesA()">Toggle Answer</a></p>
           <div style="display: none;" id="eq-lines-a"></div>
+        </div>
+      </div>
+    </ul>
+    <ul>
+      <li><a href="javascript:void(0)" onclick="factorQuads()">Factoring Quadratics</a></li>
+      <div style="display: none;" id="factor-quads">
+        <p>
+          <label for="a-factor-quads">Allow a > 1? </label><input type="checkbox" id="a-factor-quads">
+          &nbsp;
+          <label for="gcf-factor-quads">Allow GCF? </label><input type="checkbox" id="gcf-factor-quads">
+          &nbsp;
+          <button onclick="factorQuadsQ()">Generate</button>
+        </p>
+        <div style="display: none;" id="factor-quads-body">
+          <div id="factor-quads-q"></div>
+          <p><a href="javascript:void(0)" onclick="factorQuadsA()">Toggle Answer</a></p>
+          <div style="display: none;" id="factor-quads-a"></div>
         </div>
       </div>
     </ul>
