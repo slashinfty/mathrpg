@@ -73,8 +73,8 @@ async function eqLinesQ() {
   switch (document.getElementById("eq-lines-type").value) {
     case "1":
       let p, q;
-      let a = Math.floor(Math.random() * 21) - 10;
-      let b = Math.floor(Math.random() * 21) - 10;
+      let a = Math.floor(Math.random() * 41) - 20;
+      let b = Math.floor(Math.random() * 41) - 20;
       do {
         p = Math.floor(Math.random() * 21) - 10;
       } while (p === 0);
@@ -111,13 +111,13 @@ async function eqLinesQ() {
       break;
     case "2":
       let c, d;
-      let e = Math.floor(Math.random() * 21) - 10;
-      let f = Math.floor(Math.random() * 21) - 10;
+      let e = Math.floor(Math.random() * 41) - 20;
+      let f = Math.floor(Math.random() * 41) - 20;
       do {
-        c = Math.floor(Math.random() * 21) - 10;
+        c = Math.floor(Math.random() * 41) - 20;
       } while (c === e);
       do {
-        d = Math.floor(Math.random() * 21) - 10;
+        d = Math.floor(Math.random() * 41) - 20;
       } while (d === f);
       let slope2, int2;
       slope2 = reduce(d - f, c - e);
@@ -166,13 +166,11 @@ async function eqLinesQ() {
       document.getElementById("eq-lines-a").style.display = "none";
       break;
     case "3":
-      let g, h;
+      let h;
       let i = Math.floor(Math.random() * 201) - 100;
-      let j = Math.floor(Math.random() * 21) - 10;
-      let k = Math.floor(Math.random() * 21) - 10;
-      do {
-        g = Math.floor(Math.random() * 31) - 15;
-      } while (g === 0);
+      let j = Math.floor(Math.random() * 41) - 20;
+      let k = Math.floor(Math.random() * 41) - 20;
+      let g = Math.floor(Math.random() * 15) + 1;
       do {
         h = Math.floor(Math.random() * 31) - 15;
       } while (h === 0);
@@ -214,13 +212,11 @@ async function eqLinesQ() {
       document.getElementById("eq-lines-a").style.display = "none";
       break;
     case "4":
-      let l, m;
+      let m;
       let n = Math.floor(Math.random() * 201) - 100;
-      let o = Math.floor(Math.random() * 21) - 10;
-      let r = Math.floor(Math.random() * 21) - 10;
-      do {
-        l = Math.floor(Math.random() * 31) - 15;
-      } while (l === 0);
+      let o = Math.floor(Math.random() * 41) - 20;
+      let r = Math.floor(Math.random() * 41) - 20;
+      let l = Math.floor(Math.random() * 15) + 1;
       do {
         m = Math.floor(Math.random() * 31) - 15;
       } while (m === 0);
@@ -289,10 +285,10 @@ async function factorQuadsQ() {
     b = 1;
   }
   do {
-    p = Math.floor(Math.random() * 25) - 12;
+    p = Math.floor(Math.random() * 31) - 15;
   } while (p === 0);
   do {
-    q = Math.floor(Math.random() * 25) - 12;
+    q = Math.floor(Math.random() * 31) - 15;
   } while (q === 0);
   let firstFactor = reduce(a, p, true);
   if (firstFactor[2] < 0) firstFactor.forEach((e, i) => firstFactor[i] = -e);
@@ -351,10 +347,10 @@ async   function quadFormsQ() {
   let p, q;
   do {
     do {
-      p = Math.floor(Math.random() * 25) - 12;
+      p = Math.floor(Math.random() * 31) - 15;
     } while (p === 0);
     do {
-      q = Math.floor(Math.random() * 25) - 12;
+      q = Math.floor(Math.random() * 31) - 15;
     } while (q === 0); 
   } while (document.getElementById("quad-start-form").value === "3" ? ((a * q) + (b * p)) % (2 * a * b) !== 0 : false);
   let firstFactor = reduce(a, p);
