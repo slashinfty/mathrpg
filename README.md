@@ -42,4 +42,4 @@ Below are the mathematical formulae used.
 
 ![equation](https://latex.codecogs.com/svg.latex?%5Ctext%7BStandard%3A%20%7Dabx%5E%7B2%7D&plus;%28aq&plus;bp%29x&plus;pq)
 
-![equation](https://latex.codecogs.com/svg.latex?%5Ctext%7BVertex%3A%20%7Dab%5Cleft%28x&plus;%5Cdfrac%7Baq&plus;bp%7D%7B2ab%7D%5Cright%29%5E%7B2%7D&plus;%5Cdfrac%7B4abpq%28aq&plus;bp%29%5E%7B2%7D%7D%7B4ab%7D)
+![equation](https://latex.codecogs.com/svg.latex?%5Ctext%7BVertex%3A%20%7Dab%5Cleft%28x&plus;%5Cdfrac%7Baq&plus;bp%7D%7B2ab%7D%5Cright%29%5E%7B2%7D&plus;%5Cdfrac%7B4abpq-%28aq&plus;bp%29%5E%7B2%7D%7D%7B4ab%7D)
