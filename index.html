@@ -54,6 +54,25 @@
       </div>
     </ul>
     <ul>
+      <li><a href="javascript:void(0)" onclick="transform()">Geometric Transformations</a></li>
+      <div style="display: none;" id="transform">
+        <p>
+          <label for="reflect">Allow reflections not through origin? </label><input type="checkbox" id="reflect">
+        </p>
+        <p>
+          <label for="rotate-dilate">Allow rotations/dilations not centered at origin? </label><input type="checkbox" id="rotate-dilate">
+        </p>
+        <p>
+          <button onclick="transformQ()">Generate</button>
+        </p>
+        <div style="display: none;" id="transform-body">
+          <div id="transform-q"></div>
+          <p><a href="javascript:void(0)" onclick="transformA()">Toggle Answer</a></p>
+          <div style="display: none;" id="transform-a"></div>
+        </div>
+      </div>
+    </ul>
+    <ul>
       <li><a href="javascript:void(0)" onclick="factorQuads()">Factoring Quadratics</a></li>
       <div style="display: none;" id="factor-quads">
         <p>

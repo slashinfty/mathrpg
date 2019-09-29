@@ -341,7 +341,7 @@ function quadForms() {
   else document.getElementById("quad-forms").style.display = "none";
 }
 
-async   function quadFormsQ() {
+async function quadFormsQ() {
   let a = Math.floor(Math.random() * 4) + 1;
   let b = Math.floor(Math.random() * 4) + 1;
   let p, q;
@@ -420,6 +420,7 @@ async   function quadFormsQ() {
       await typeset(() => {
         let answer = document.getElementById("quad-forms-a");
         answer.innerHTML = "$$\\text{Standard: } y=" + aTerm + bTerm + cTerm + "$$ $$\\text{Factored: } y=\\left(" + fTerm + pTerm + "\\right)\\left(" + gTerm + qTerm + "\\right)$$";
+        return answer;
       });
   }
   document.getElementById("quad-forms-body").style.display = "block";
@@ -429,4 +430,161 @@ async   function quadFormsQ() {
 function quadFormsA() {
   if (document.getElementById("quad-forms-a").style.display === "none") document.getElementById("quad-forms-a").style.display = "block";
   else document.getElementById("quad-forms-a").style.display = "none";
+}
+
+function transform() {
+  if (document.getElementById("transform").style.display === "none") document.getElementById("transform").style.display = "block";
+  else document.getElementById("transform").style.display = "none";
+}
+
+async function transformQ() {
+  let a, b, c, d, e, f, h, k, p, q, r;
+  a = Math.floor(Math.random() * 21) - 10;
+  b = Math.floor(Math.random() * 21) - 10;
+  do {
+    c = Math.floor(Math.random() * 21) - 10;
+    d = Math.floor(Math.random() * 21) - 10;
+  } while (a === c && b === d);
+  do {
+    e = Math.floor(Math.random() * 21) - 10;
+    f = Math.floor(Math.random() * 21) - 10;
+  } while ((e === a && e === c) || (f === b && f === d));
+  let questionStr = "$$A(" + a + "," + b + ")\\ B(" + c + "," + d + ")\\ C(" + e + "," + f + ")$$";
+  let pick = Math.random();
+  if (pick < 0.25) {
+    do {
+      h = Math.floor(Math.random() * 19) - 9;
+      k = Math.floor(Math.random() * 19) - 9;
+    } while (h === 0 || k === 0);
+    let hDir = h > 0 ? "right " : "left ";
+    let kDir = k > 0 ? "up " : "down ";
+    questionStr = "$$\\text{Translate ABC " + hDir + Math.abs(h) + " units and " + kDir + Math.abs(k) + " units}$$ " + questionStr;
+    await typeset(() => {
+      let question = document.getElementById("transform-q");
+      question.innerHTML = questionStr;
+      return question;
+    });
+    await typeset(() => {
+      let answer = document.getElementById("transform-a");
+      answer.innerHTML = "$$A'(" + (a + h).toString() + "," + (b + k).toString() + ")\\ B'(" + (c + h).toString() + "," + (d + k).toString() + ")\\ C'(" + (e + h).toString() + ")$$";
+      return answer;
+    });
+  } else if (pick < 0.5) {
+    let direction = Math.random();
+    r = document.getElementById("reflect").checked ? Math.floor(Math.random() * 13) - 6 : 0;
+    let newA, newB, newC, line;
+    if (direction < 0.5) {
+      line = r === 0 ? "y-axis" : "line x=" + r;
+      newA = [a, 2 * r - b];
+      newB = [c, 2 * r - d];
+      newC = [e, 2 * r - f];
+    } else {
+      line = r === 0 ? "x-axis" : "line y=" + r;
+      newA = [2 * r - a, b];
+      newB = [2 * r - c, d];
+      newC = [2 * r - e, f];
+    }
+    questionStr = "$$\\text{Reflect ABC over the " + line + "}$$ " + questionStr;
+    await typeset(() => {
+      let question = document.getElementById("transform-q");
+      question.innerHTML = questionStr;
+      return question;
+    });
+    await typeset(() => {
+      let answer = document.getElementById("transform-a");
+      answer.innerHTML = "$$A'(" + newA[0] + "," + newA[1] + ")\\ B'(" + newB[0] + "," + newB[1] + ")\\ C'(" + newC[0] + "," + newC[1] + ")$$";
+      return answer;
+    });
+  } else if (pick < 0.75) {
+    let direction = Math.random();
+    p = document.getElementById("rotate-dilate").checked ? Math.floor(Math.random() * 13) - 6 : 0;
+    q = document.getElementById("rotate-dilate").checked ? Math.floor(Math.random() * 13) - 6 : 0;
+    let newA, newB, newC, center, point;
+    if (p === 0 && q === 0) {
+      center = "the origin";
+      point = "";
+    } else {
+      center = "the point ";
+      point = "(" + p + "," + q + ")";
+    }
+    if (direction < 0.33) {
+      questionStr = "$$\\text{Rotate ABC 90}^\\circ\\text{ clockwise about " + center + "}" + point + "$$ " + questionStr;
+      newA = [p + b - q, q - a + p];
+      newB = [p + d - q, q - c + p];
+      newC = [p + f - q, q - e + p];
+    } else if (direction < 0.67) {
+      questionStr = "$$\\text{Rotate ABC 90}^\\circ\\text{ counterclockwise about " + center + "}" + point + "$$ " + questionStr;
+      newA = [p - b + q, q + a - p];
+      newB = [p - d + q, q + c - p];
+      newC = [p - f + q, q + e - p];
+    } else {
+      questionStr = "$$\\text{Rotate ABC 180}^\\circ\\text{ about " + center + "}" + point + "$$ " + questionStr;
+      newA = [2 * p - a, 2 * q - b];
+      newB = [2 * p - c, 2 * q - d];
+      newC = [2 * p - e, 2 * q - f];
+    }
+    await typeset(() => {
+      let question = document.getElementById("transform-q");
+      question.innerHTML = questionStr;
+      return question;
+    });
+    await typeset(() => {
+      let answer = document.getElementById("transform-a");
+      answer.innerHTML = "$$A'(" + newA[0] + "," + newA[1] + ")\\ B'(" + newB[0] + "," + newB[1] + ")\\ C'(" + newC[0] + "," + newC[1] + ")$$";
+      return answer;
+    });
+  } else {
+    p = document.getElementById("rotate-dilate").checked ? Math.floor(Math.random() * 13) - 6 : 0;
+    q = document.getElementById("rotate-dilate").checked ? Math.floor(Math.random() * 13) - 6 : 0;
+    let scale = [-4, -3, -2, 2, 3, 4];
+    k = scale[Math.floor(Math.random() * scale.length)];
+    let newA, newB, newC;
+    if (p === 0 && q === 0) {
+      center = "the origin";
+      point = "";
+    } else {
+      center = "the point ";
+      point = "(" + p + "," + q + ")";
+    }
+    if (k < 0) {
+      k = Math.abs(k);
+      questionStr = "$$\\text{Dilate ABC by a scale factor of }\\dfrac{1}{" + k + "}\\text{ centered at " + center + "}" + point + "$$ " + questionStr;
+      function makeStrings(array) {
+        let newArr = [];
+        array.forEach(e => {
+          if (e[1] === 1) newArr.push(e[0].toString());
+          else {
+            let sign = e[0] < 0 || e[1] < 0 ? "-" : "";
+            newArr.push(sign + "\\dfrac{" + Math.abs(e[0]) + "}{" + Math.abs(e[1]) + "}");
+          }
+        });
+        return newArr;
+      }
+      newA = makeStrings([reduce(k * p + a - p, k), reduce(k * q + b - q, k)]);
+      newB = makeStrings([reduce(k * p + c - p, k), reduce(k * q + d - q, k)]);
+      newC = makeStrings([reduce(k * p + e - p, k), reduce(k * q + f - q, k)]);
+    } else {
+      questionStr = "$$\\text{Dilate ABC by a scale factor of " + k.toString() + " centered at " + center + "}" + point + "$$ " + questionStr;
+      newA = [(p + (k * a) - (k * p)).toString(), (q + (k * b) - (k * q)).toString()];
+      newB = [(p + (k * c) - (k * p)).toString(), (q + (k * d) - (k * q)).toString()];
+      newC = [(p + (k * e) - (k * p)).toString(), (q + (k * f) - (k * q)).toString()];
+    }
+    await typeset(() => {
+      let question = document.getElementById("transform-q");
+      question.innerHTML = questionStr;
+      return question;
+    });
+    await typeset(() => {
+      let answer = document.getElementById("transform-a");
+      answer.innerHTML = "$$A'\\left(" + newA[0] + "," + newA[1] + "\\right)\\ B'\\left(" + newB[0] + "," + newB[1] + "\\right)\\ C'\\left(" + newC[0] + "," + newC[1] + "\\right)$$";
+      return answer;
+    });
+  }
+  document.getElementById("transform-body").style.display = "block";
+  document.getElementById("transform-a").style.display = "none";
+}
+
+function transformA() {
+  if (document.getElementById("transform-a").style.display === "none") document.getElementById("transform-a").style.display = "block";
+  else document.getElementById("transform-a").style.display = "none";
 }
