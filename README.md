@@ -32,6 +32,34 @@ Below are the mathematical formulae used.
 
 ![equation](https://latex.codecogs.com/svg.latex?%5Ctext%7BSlope-Intercept%3A%20%7Dy%3D-%5Cdfrac%7Bl%7D%7Bm%7Dx&plus;%5Cdfrac%7Brm&plus;ol%7D%7Bm%7D%5C%20%5Ctext%7BStandard%3A%20%7Dlx&plus;my%3Drm&plus;ol)
 
+## Geometric Transformations
+
+### Translations
+![equation](https://latex.codecogs.com/svg.latex?%5Ctext%7BTranslate%20%7Dh%5Ctext%7B%20units%20horizontally%20and%20%7Dk%5Ctext%7B%20units%20vertically%7D)
+
+![equation](https://latex.codecogs.com/svg.latex?%5Ctext%7BRule%3A%20%7D%28x%2Cy%29%5Cto%20%28x&plus;h%2Cy&plus;k%29)
+
+### Reflections
+![equation](https://latex.codecogs.com/svg.latex?%5Ctext%7BReflect%20over%20the%20line%20%7Dy%3Dr%5Ctext%7B%20or%20%7Dx%3Dr)
+
+![equation](https://latex.codecogs.com/svg.latex?%5Ctext%7BVertical%20line%20rule%3A%20%7D%28x%2Cy%29%5Cto%20%28x%2C2p-y%29)
+
+![equation](https://latex.codecogs.com/svg.latex?%5Ctext%7BHorizontal%20line%20rule%3A%20%7D%28x%2Cy%29%5Cto%20%282p-x%2Cy%29)
+
+### Rotations
+![equation](https://latex.codecogs.com/svg.latex?%5Ctext%7BRotate%20about%20the%20point%20%7D%28p%2Cq%29)
+
+![equation](https://latex.codecogs.com/svg.latex?90%5E%5Ccirc%5Ctext%7B%20clockwise%20rule%3A%20%7D%28x%2Cy%29%5Cto%28p&plus;y-q%2Cq-x&plus;p%29)
+
+![equation](https://latex.codecogs.com/svg.latex?90%5E%5Ccirc%5Ctext%7B%20counterclockwise%20rule%3A%20%7D%28x%2Cy%29%5Cto%28p-y&plus;q%2Cq&plus;x-p%29)
+
+![equation](https://latex.codecogs.com/svg.latex?180%5E%5Ccirc%5Ctext%7B%20rule%3A%20%7D%28x%2Cy%29%5Cto%282p-x%2C2q-y%29)
+
+### Dilations
+![equation](https://latex.codecogs.com/svg.latex?%5Ctext%7BDilate%20by%20scale%20factor%20%7Dk%5Ctext%7B%20centered%20at%20%7D%28p%2Cq%29)
+
+![equation](https://latex.codecogs.com/svg.latex?%5Ctext%7BRule%3A%20%7D%28x%2Cy%29%5Cto%28p&plus;kx-kp%2Cq&plus;ky-kq%29)
+
 ## Factoring Quadratics
 ![equation](https://latex.codecogs.com/svg.latex?%5Ctext%7BFactored%3A%20%7Dg%28ax&plus;p%29%28bx&plus;q%29%20%5C%20%5C%7Ba%2Cb%2Cg%2Cp%2Cq%5Cin%5Cmathbb%7BZ%7D%5C%20%7C%5C%20g%2Cp%2Cq%5Cneq%200%5C%7D)
 
