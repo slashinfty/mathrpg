@@ -42,9 +42,9 @@ Below are the mathematical formulae used.
 ### Reflections
 ![equation](https://latex.codecogs.com/svg.latex?%5Ctext%7BReflect%20over%20the%20line%20%7Dy%3Dr%5Ctext%7B%20or%20%7Dx%3Dr)
 
-![equation](https://latex.codecogs.com/svg.latex?%5Ctext%7BVertical%20line%20rule%3A%20%7D%28x%2Cy%29%5Cto%20%28x%2C2p-y%29)
+![equation](https://latex.codecogs.com/svg.latex?%5Ctext%7BVertical%20line%20rule%3A%20%7D%28x%2Cy%29%5Cto%20%28x%2C2r-y%29)
 
-![equation](https://latex.codecogs.com/svg.latex?%5Ctext%7BHorizontal%20line%20rule%3A%20%7D%28x%2Cy%29%5Cto%20%282p-x%2Cy%29)
+![equation](https://latex.codecogs.com/svg.latex?%5Ctext%7BHorizontal%20line%20rule%3A%20%7D%28x%2Cy%29%5Cto%20%282r-x%2Cy%29)
 
 ### Rotations
 ![equation](https://latex.codecogs.com/svg.latex?%5Ctext%7BRotate%20about%20the%20point%20%7D%28p%2Cq%29)
