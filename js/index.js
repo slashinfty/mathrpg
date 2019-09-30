@@ -466,7 +466,7 @@ async function transformQ() {
     });
     await typeset(() => {
       let answer = document.getElementById("transform-a");
-      answer.innerHTML = "$$A'(" + (a + h).toString() + "," + (b + k).toString() + ")\\ B'(" + (c + h).toString() + "," + (d + k).toString() + ")\\ C'(" + (e + h).toString() + ")$$";
+      answer.innerHTML = "$$A'(" + (a + h).toString() + "," + (b + k).toString() + ")\\ B'(" + (c + h).toString() + "," + (d + k).toString() + ")\\ C'(" + (e + h).toString() + "," + (f + k).toString() + ")$$";
       return answer;
     });
   } else if (pick < 0.5) {
