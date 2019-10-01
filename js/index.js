@@ -180,7 +180,7 @@ async function eqLinesQ() {
         slope3[0] = -slope3[0];
         slope3[1] = -slope3[1];
       }
-      int3 = reduce((k * g) + (j * h), g);
+      int3 = reduce((k * g) - (j * h), g);
       let slope3Neg = negative(slope3) ? "-" : "";
       let int3Neg = negative(int3) ? "-" : "+";
       let yterm3Neg = slope3[1] < 0 ? "-" : "+";
@@ -475,14 +475,14 @@ async function transformQ() {
     let newA, newB, newC, line;
     if (direction < 0.5) {
       line = r === 0 ? "y-axis" : "line x=" + r;
-      newA = [a, 2 * r - b];
-      newB = [c, 2 * r - d];
-      newC = [e, 2 * r - f];
-    } else {
-      line = r === 0 ? "x-axis" : "line y=" + r;
       newA = [2 * r - a, b];
       newB = [2 * r - c, d];
       newC = [2 * r - e, f];
+    } else {
+      line = r === 0 ? "x-axis" : "line y=" + r;
+      newA = [a, 2 * r - b];
+      newB = [c, 2 * r - d];
+      newC = [e, 2 * r - f];
     }
     questionStr = "$$\\text{Reflect ABC over the " + line + "}$$ " + questionStr;
     await typeset(() => {
