@@ -205,7 +205,7 @@ async function eqLinesQ() {
       });
       await typeset(() => {
         let answer = document.getElementById("eq-lines-a");
-        answer.innerHTML = "$$\\text{Slope-Intercept: } y=" + slope3Print + "x" + int3Print + "$$ $$\\text{Standard: } " + xterm3Neg + xterm3Print + "x" + yterm3Neg + yterm3Print + "y=" + ((k * slope3[1]) + (j * slope3[0])).toString() + "$$";
+        answer.innerHTML = "$$\\text{Slope-Intercept: } y=" + slope3Print + "x" + int3Print + "$$ $$\\text{Standard: } " + xterm3Neg + xterm3Print + "x" + yterm3Neg + yterm3Print + "y=" + ((k * slope3[1]) - (j * slope3[0])).toString() + "$$";
         return answer;
       });
       document.getElementById("eq-lines-body").style.display = "block";
